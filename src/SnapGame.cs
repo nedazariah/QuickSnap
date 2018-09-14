@@ -22,6 +22,7 @@ namespace CardGames
 			//Fetch the next batch of UI interaction
 			SwinGame.ProcessEvents();
 
+
 			if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
 			{
 				myGame.Start ();
@@ -34,14 +35,17 @@ namespace CardGames
 				} else if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT))
 				{
 					myGame.PlayerHit (0);
+					SwinGame.OpenAudio ();
 					SwinGame.LoadSoundEffectNamed("Slap","slap.wav");
 					SwinGame.PlaySoundEffect ("Slap");
 				} 
 				else if (SwinGame.KeyTyped (KeyCode.vk_RSHIFT)) 
 				{
 					myGame.PlayerHit (1);
+					SwinGame.OpenAudio ();
 					SwinGame.LoadSoundEffectNamed("Slap","slap.wav");
 					SwinGame.PlaySoundEffect ("Slap");
+
 				}
 			}
 		}
@@ -89,6 +93,8 @@ namespace CardGames
         {
             //Open the game window
             SwinGame.OpenGraphicsWindow("Snap!", 860, 500);
+			SwinGame.ShowSwinGameSplashScreen();
+			SwinGame.OpenAudio ();
 
 			//Load the card images and set their cell details
             LoadResources();
@@ -103,6 +109,7 @@ namespace CardGames
 				DrawGame (myGame);
 				UpdateGame (myGame);
             }
+			SwinGame.CloseAudio ();
         }
     }
 }
