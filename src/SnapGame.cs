@@ -30,22 +30,22 @@ namespace CardGames
 			if (myGame.IsStarted) {
 				if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT) && SwinGame.KeyTyped (KeyCode.vk_RSHIFT)) {
 					SwinGame.LoadSoundEffectNamed("Boom","Boom-Kick.wav");
+					SwinGame.SoundEffectNamed ("Boom");
 					SwinGame.PlaySoundEffect ("Boom");
 					//TODO: add sound effects
 				} else if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT))
 				{
 					myGame.PlayerHit (0);
-					SwinGame.OpenAudio ();
 					SwinGame.LoadSoundEffectNamed("Slap","slap.wav");
+					SwinGame.SoundEffectNamed ("Slap");
 					SwinGame.PlaySoundEffect ("Slap");
 				} 
 				else if (SwinGame.KeyTyped (KeyCode.vk_RSHIFT)) 
 				{
 					myGame.PlayerHit (1);
-					SwinGame.OpenAudio ();
 					SwinGame.LoadSoundEffectNamed("Slap","slap.wav");
+					SwinGame.SoundEffectNamed ("Slap");
 					SwinGame.PlaySoundEffect ("Slap");
-
 				}
 			}
 		}
@@ -92,9 +92,10 @@ namespace CardGames
         public static void Main()
         {
             //Open the game window
-            SwinGame.OpenGraphicsWindow("Snap!", 860, 500);
+            SwinGame.OpenAudio ();
+			SwinGame.OpenGraphicsWindow("Snap!", 860, 500);
 			SwinGame.ShowSwinGameSplashScreen();
-			SwinGame.OpenAudio ();
+
 
 			//Load the card images and set their cell details
             LoadResources();
